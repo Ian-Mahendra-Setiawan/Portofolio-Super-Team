@@ -3,18 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profil - Audrey Marcella</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@500;700&display=swap');
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            background: 
+                radial-gradient(
+                    circle at 15% 15%, 
+                    rgba(167, 139, 250, 0.2) 0%, 
+                    transparent 45%),
+                radial-gradient(
+                    circle at 85% 85%, 
+                    rgba(245, 158, 11, 0.12) 0%, 
+                    transparent 45%),
+                linear-gradient(
+                    135deg, 
+                    #f5f3ff 0%, 
+                    #ede9fe 50%, 
+                    #fdf4ff 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #5b21b6;
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: #fff;
+            border-radius: 16px;
+            border-bottom: 4px solid #7c3aed;
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            color: #5b21b6;
+            margin: 28px 0 12px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid #7c3aed;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul, p {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 10px 30px rgba(109, 40, 217, 0.06);
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 1.6;
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            background: rgba(237, 233, 254, 0.5);
+            border-left: 3px solid #a78bfa;
+        }
+
+        li:last-child { 
+            margin-bottom: 0; 
+        }
+
+        li strong { 
+            color: #6d28d9; 
+            font-weight: 600; 
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            border-left: 4px solid #7c3aed;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 14px auto;
+            border-radius: 14px;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 25px rgba(91, 33, 182, 0.15);
+            transition: transform 0.25s ease;
+        }
+
+        img:hover { 
+            transform: scale(1.01); 
+        }
+
+        /* Styling Graph Keahlian */
+        .skills-card {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 10px 30px rgba(109, 40, 217, 0.06);
+            margin-bottom: 16px;
+        }
+
+        .skill-group {
+            margin-bottom: 20px;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-group-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #6d28d9;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px dashed rgba(167, 139, 250, 0.45);
+        }
+
+        .skill-item {
+            background: rgba(237, 233, 254, 0.45);
+            border-left: 3px solid #a78bfa;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #4c1d95;
+            margin-bottom: 6px;
+        }
+
+        .skill-percent {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: #7c3aed;
+            background: #fff;
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.4);
+        }
+
+        .skill-track {
+            width: 100%;
+            height: 10px;
+            background: #ede9fe;
+            border-radius: 999px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(91, 33, 182, 0.12);
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a78bfa 0%, #7c3aed 100%);
+            border-radius: 999px;
+            animation: growBar 0.9s ease-out forwards;
+        }
+
+        @keyframes growBar {
+            from { 
+                width: 0; 
+            }
+        }
+
+        .other-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tool-badge {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #5b21b6;
+            background: rgba(237, 233, 254, 0.7);
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-top: 24px;
+        }
+
+        a, .cat-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        a {
+            color: #fff;
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .cat-btn {
+            color: #5b21b6;
+            background: #fff;
+            border: 2px solid #a78bfa;
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.12);
+        }
+
+        .cat-btn:hover {
+            background: #f5f3ff;
+            border-color: #7c3aed;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.22);
+        }
+
+        .cat-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Animasi Gambar Kucing Jatuh */
+        .falling-cat {
+            position: fixed;
+            top: -110px;
+            max-width: none;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            pointer-events: none;
+            z-index: 9999;
+            animation: catFall linear forwards;
+        }
+
+        @keyframes catFall {
+            0% {
+                transform: translateY(0) rotate(var(--start-rot, -15deg));
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(115vh) rotate(var(--end-rot, 25deg));
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- siklus 1 -->
+    
+    <!-- siklus1 -->
     <h1>Profil Anggota</h1>
     <ul>
         <li><strong>Nama:</strong> Audrey Marcella</li>
-        <br>
-        <img src="assets/myWife.png" width="350px">
+        <img src="assets/myWife.png" width="350px" alt="My Wife">
         <li><strong>Hobi:</strong> Tidur</li>
     </ul>
-                        
+                
     <h2>Keahlian</h2>
     <ul>
         <li><strong>Bahasa:</strong> Indonesia, Sunda, Jawa, Jepang</li>
@@ -22,13 +307,66 @@
         <li><strong>Lainnya:</strong> Canva, Figma</li>
     </ul>
 
-    <!-- siklus 2 -->
+    <!-- siklus2 -->
     <h2>Aktivitas Terakhir</h2>
     <p>Hari ini saya tidur 10 jam</p>
-    <img src="assets/Amir.jpeg"  width="350px">
+    <img src="assets/Amir.jpeg" width="400px" alt="Amir" class="sound-img" onclick="playYippee(this), spawnCats()" title="Klik gambar untuk suara Yippee!">
+    <audio id="yippeeSound" src="assets/Yippee.m4a" preload="auto"></audio>
 
+    <div class="action-buttons">
+        <a href="index.html">Kembali ke Menu Utama</a>
+        <!-- <button type="button" class="cat-btn" onclick="spawnCats()">Hujan Kucing</button> ini gajadi awkoa -->
+    </div>
 
-    <br><br>
-    <a href="index.html">Kembali ke Menu Utama</a>
+    <!-- siklus3 -->
+    <script>
+        // Fungsi memutar suara Yippee saat foto Amir diklik
+        function playYippee(imgElement) {
+            const sound = document.getElementById('yippeeSound');
+            sound.currentTime = 0; // Reset ke detik 0 agar bisa diklik berkali-kali dengan cepat
+            sound.play();
+
+            // Animasi memantul kecil pada gambar
+            imgElement.classList.remove('pop');
+            void imgElement.offsetWidth; // Memicu ulang animasi CSS
+            imgElement.classList.add('pop');
+        }
+
+        const catImages = [
+            "assets/kianaChibi-finality.png",
+            "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><path d='M25 52 L18 18 L48 36 Z' fill='%23ffffff' stroke='%236d28d9' stroke-width='5' stroke-linejoin='round'/><path d='M95 52 L102 18 L72 36 Z' fill='%23ffffff' stroke='%236d28d9' stroke-width='5' stroke-linejoin='round'/><path d='M28 46 L24 27 L41 38 Z' fill='%23ddd6fe'/><path d='M92 46 L96 27 L79 38 Z' fill='%23ddd6fe'/><ellipse cx='60' cy='68' rx='44' ry='38' fill='%23ffffff' stroke='%236d28d9' stroke-width='5'/><circle cx='44' cy='64' r='5.5' fill='%234c1d95'/><circle cx='76' cy='64' r='5.5' fill='%234c1d95'/><circle cx='42' cy='62' r='2' fill='%23ffffff'/><circle cx='74' cy='62' r='2' fill='%23ffffff'/><ellipse cx='34' cy='73' rx='6' ry='3.5' fill='%23f472b6' opacity='0.5'/><ellipse cx='86' cy='73' rx='6' ry='3.5' fill='%23f472b6' opacity='0.5'/><polygon points='56,72 64,72 60,77' fill='%23f472b6'/><path d='M51 80 Q55.5 85 60 80 Q64.5 85 69 80' fill='none' stroke='%234c1d95' stroke-width='3.5' stroke-linecap='round'/><line x1='12' y1='68' x2='28' y2='70' stroke='%236d28d9' stroke-width='3' stroke-linecap='round'/><line x1='12' y1='77' x2='28' y2='76' stroke='%236d28d9' stroke-width='3' stroke-linecap='round'/><line x1='108' y1='68' x2='92' y2='70' stroke='%236d28d9' stroke-width='3' stroke-linecap='round'/><line x1='108' y1='77' x2='92' y2='76' stroke='%236d28d9' stroke-width='3' stroke-linecap='round'/></svg>",      
+        ];
+
+        function spawnCats() {
+            const jumlahKucing = 10;
+
+            for (let i = 0; i < jumlahKucing; i++) {
+                setTimeout(() => {
+                    const cat = document.createElement('img');
+                    cat.src = catImages[Math.floor(Math.random() * catImages.length)];
+                    cat.alt = 'Kucing Jatuh';
+                    cat.className = 'falling-cat';
+
+                    const leftPos = Math.random() * 90 + 2;
+                    const size = Math.random() * 35 + 55;
+                    const duration = Math.random() * 1.8 + 2.2;
+                    const startRot = (Math.random() * 40 - 20).toFixed(0) + 'deg';
+                    const endRot = (Math.random() * 80 - 40).toFixed(0) + 'deg';
+
+                    cat.style.left = leftPos + 'vw';
+                    cat.style.width = size + 'px';
+                    cat.style.animationDuration = duration + 's';
+                    cat.style.setProperty('--start-rot', startRot);
+                    cat.style.setProperty('--end-rot', endRot);
+
+                    document.body.appendChild(cat);
+
+                    cat.addEventListener('animationend', () => {
+                        cat.remove();
+                    });
+                }, i * 110);
+            }
+        }
+    </script>
 </body>
 </html>
