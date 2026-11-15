@@ -1,36 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Rafael</title>
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #444445;
+            font-family: 'Tahoma', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: fit-content;
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 16px;
+        }
+
+        #profile-card {
+            width: 500px;
+            max-width: 100%;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 24px 32px;
+            border-radius: 20px;
+        }
+
+        #profile-card h1 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        #profile-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        #profile-img {
+            width: 140px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 20%;
+        }
+
+        .section-card {
+            width: 100%;
+            min-width: 280px;
+            background-color: #ffffff;
+            padding: 18px 28px;
+            border-radius: 16px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        ul, ol {
+            list-style-position: outside;
+            padding-left: 20px;
+            text-align: left;
+            color: #6b7280;
+        }
+
+        ol{
+            color: #1f2937;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        .activity-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 8px;
+        }
+
+        #button {
+            text-align: center;
+        }
+
+        #Open-Btn {
+            margin-top: 4px;
+            padding: 8px 24px;
+            min-width: 150px;
+            background-color: #ffffff;
+            color: #1f2937;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        #Open-Btn:hover {
+            background-color: #1f2937;
+            color: #ffffff;
+        }
+
+        .Overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .Overlay.active {
+            display: flex;
+        }
+
+        .Content {
+            position: relative;
+            background-color: #ffffff;
+            padding: 12px;
+            border-radius: 14px;
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        #img {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        #Close-btn {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 30px;
+            height: 30px;
+            background-color: #1f2937;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Profile</h1>
-    <div>
-        <h3>Rafael Ephraim Valentino</h3>
-        <img src="assets/_JPG26961.jpg" alt="profile photo">
-    
+    <div class="container">
+        <div id="profile-card">
+            <h1>Profile</h1>
+            <h3>Rafael Ephraim Valentino</h3>
+            <img id="profile-img" src="assets/_JPG26961.jpg" alt="profile photo">
+        </div>
+
+        <div class="section-card">
+            <p class="section-title"><strong>Hobi</strong></p>
+            <ol>
+                <li>Mendengar Podcast</li>
+                <li>Mendengar Musik</li>
+            </ol>
+        </div>
+
+        <div class="section-card">
+            <p class="section-title"><strong>Keahlian</strong></p>
+            <ol>
+                <li>Pemrograman
+                    <ul>
+                        <li>Java</li>
+                        <li>HTML</li>
+                        <li>MYSQL</li>
+                    </ul>
+                </li>
+                <li>Fotografi</li>
+            </ol>
+        </div>
+
+        <div class="section-card">
+            <p class="section-title"><strong>Aktivitas Terakhir:</strong></p>
+            <p>Menyortir foto-foto di laptop</p>
+            <img class="activity-img" src="assets/sortir_foto.png" alt="menyortir foto">
+        </div>
+
+        <div id="button">
+            <button id="Open-Btn" type="button">Tambahan</button>
+            
+            <div id="image-modal" class="Overlay">
+                <div class="Content">
+                    <span id="Close-btn">&times;</span>
+                    <img src="assets/patrick.jpg" alt="Gambar Patrick" id="img">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <p><Strong>Hobi</Strong>: Mendengar podcast</p>
-    
-    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const openBtn = document.getElementById("Open-Btn");
+            const closeBtn = document.getElementById("Close-btn");
+            const modal = document.getElementById("image-modal");
 
-    <div>
-        <p><Strong>Keahlian</Strong></p>
-        <ul>
-            <li>Fotografi</li>
-        </ul>
+            openBtn.addEventListener("click", () => {
+                modal.classList.add("active");
+            });
 
-    </div>
+            closeBtn.addEventListener("click", () => {
+                modal.classList.remove("active");
+            });
 
-    <div>
-        <p><Strong>Aktivitas Terakhir:</Strong></p>
-        <p>Mensortir foto-foto di laptop</p>
-        <img src="assets/sortir_foto.png" alt="menyortir foto">
-    </div>
+            modal.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.classList.remove("active");
+                }
+            });
 
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && modal.classList.contains("active")) {
+                    modal.classList.remove("active");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
