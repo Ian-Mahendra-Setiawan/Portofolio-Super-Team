@@ -1,11 +1,145 @@
+body
+{
+    margin: 0;
+    background:
+    radial-gradient(at 24% 63%, rgb(7, 1, 50), transparent 70%),
+    radial-gradient(at 56% 27%, rgb(8, 33, 65), transparent 70%),
+    radial-gradient(at 46% 100%, rgb(19, 19, 18), transparent 70%),
+    radial-gradient(at 0% 100%, rgb(1, 255, 226), transparent 70%), rgb(7, 1, 50);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+html
+{
+    cursor: url("assets/normal.cur"), auto;
+}
+
+@font-face
+{
+    font-family: "Kirby-no-Kira-Kizzu";
+    src: url("assets/Library3am.otf");
+}
+
+.interactive
+{
+    color: yellow;
+    cursor: help;
+    cursor: url("assets/help.cur"), auto;
+}
+
+#master
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+*
+{
+    color: white;
+    font-family: "Kirby-no-Kira-Kizzu";
+}
+
+p
+{
+    padding: 0;
+    margin: 0;
+}
+
 #pfp
 {
+    border: 10px solid transparent;
+    cursor: url("assets/help.cur"), auto;
     width: 220px;
     height: 300px;
+}
+
+#pfp:hover
+{
+    border-image: repeating-linear-gradient(
+        45deg,yellow,#000088 20px
+    ) 20;
 }
 
 .activity
 {
     width: 480px;
     height: 270px;
+}
+
+.flexit
+{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+.textleft
+{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+#bg
+{
+    display: flex;
+    justify-content: center;
+    background-color: #2F0102CC;
+    width: 100vw;
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#bg > div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 25vw;
+    height: 100vh;
+    padding: 10px;
+}
+
+.modal
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal > div
+{
+    display: flex;
+    gap: 10px;
+}
+
+.modal > div > div
+{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    text-align: center;
+}
+
+#bg.hidden
+{
+    display: none;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.unscrollable
+{
+    overflow: hidden;
 }
