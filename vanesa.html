@@ -3,29 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <title>Vanesa's Profile</title>
+    <style>
+        /* Reset and base styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            transition: background-color 0.4s ease;
+
+            /* Layout 2 kolom dan 2 baris untuk 4 div utama */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 24px;
+        }
+
+        body > div:not(.bottom-actions) {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #2c3e50, #4a69bd, #ff758c);
+            background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e1e8ed;
+            padding-bottom: 6px;
+            width: 100%;
+            background: linear-gradient(135deg, #4a69bd, #ff758c);
+            background-clip: text;
+            color: transparent;
+        }
+
+        img {
+            border-radius: 10px;
+            object-fit: cover;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-position: inside;
+            text-align: left;
+            width: 100%;
+            padding-left: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        p {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        a {
+            background: linear-gradient(135deg, #ff7eb3, #b3bfd0);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        #surpriseBtn {
+            background: linear-gradient(135deg, #ff7eb3, #b3bfd0);
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Pop Up di tengah layar */
+        #popup {
+            display: none; /* Tersembunyi secara default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+
+            width: 90%;
+            max-width: 400px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 35px 25px 25px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        #popup.show {
+            display: flex;
+        }
+
+        #closePopup {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        #closePopup:hover {
+            color: #ff758c;
+            transform: scale(1.15);
+        }
+
+        /* Wadah untuk menumpuk gambar */
+        .image-stack {
+            position: relative;
+            width: 300px; 
+            height: 300px;
+            margin-top: 10px;
+        }
+
+        #background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-top: 0;
+            display: block;
+        }
+
+        #standing {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Posisi persis di tengah */
+            width: 220px; /* Sesuaikan besar kecilnya kucing di atas background */
+            height: auto;
+            margin-top: 0;
+            box-shadow: none; /* Menghapus kotak bayangan agar PNG transparan menyatu */
+            z-index: 2;
+        }
+
+        #catStatus {
+            margin-top: 14px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #4a69bd;
+            min-height: 24px;
+        }
+
+        .popup-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .popup-actions button {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 9px 14px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.2s ease;
+        }
+
+        .popup-actions button:hover {
+            transform: translateY(-2px);
+            opacity: 0.92;
+        }
+
+        .popup-actions button:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes catBounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -58%) scale(1.08); }
+        }
+
+        .cat-react {
+            animation: catBounce 0.4s ease;
+        }
+
+        #standing.exploded-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .popup-actions button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Vanesa Olivia Lo Jaya</h1>
+    <div>
+        <h1>Vanesa Olivia Lo Jaya</h1>
+        <img src="assets/IMG_1500.JPG" alt="Kimchi the cat pic" width="200">
+    </div>
+    <div>
+        <h2>Hobbies</h2>
+        <ul> 
+            <li>Reading</li>
+            <li>Listening to music on repeat</li>
+            <li>Sleep</li>
+            <li>Staring at Phainon and Artem Wing</li>
+        </ul>       
+    </div>
 
-    <img src="assets/IMG_1500.JPG"
-         alt="Kimchi the cat pic"
-         width="200">
+    <div> 
+        <h2>Skills</h2>
+        <ul>
+            <li>Reading novels and comics a lot</li>
+            <li>Sing</li>
+            <li>Sleep for long hours in a day</li>
+            <li>cook bizzare foods</li>
+        </ul>
+    </div>
 
-    <h2>Hobbies</h2>
-    <p>Reading, listening to music, sleep, Phainon</p>
-
-    <h2>Skills</h2>
-    <ul>
-        <li>Reading novels and comics</li>
-        <li>Sing</li>
-        <li>Sleep for long hours in a day</li>
-        <li>cook</li>
-    </ul>
-
-    <h2>Konten Aktivitas</h2>
-    <p>Sleep</p>
-    <img src="assets/catSleep.jpeg" alt="car sleeping" width="200">
+    <div>
+        <h2>Konten Aktivitas</h2>
+        <p>Sleep</p>
+        <img src="assets/catSleep.jpeg" alt="car sleeping" width="200">
+    </div>
 
     <a href="index.html">Back to Home</a>
+
+    <button id="surpriseBtn">Surprise Me!</button>
+
+    <div id="popup">
+        <span id="closePopup">&times;</span>
+        <div class="image-stack">
+            <img id="background" src="assets/ShrekBackrooms.jpg" alt="background">
+            <img id="standing" src="assets/catStandings.png" alt="cat standing">
+        </div>
+        <p id="catStatus">Feed: 0/3 | Kimchi is staring at you...</p>
+
+        <div class="popup-actions">
+            <button id="foodBtn">Give Food</button>
+            <button id="waterBtn">Give Water</button>
+            <button id="poopBtn">Make Kimchi Poop</button>
+        </div>
+    </div>
+    <script>
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('closePopup');
+
+        const standingCat = document.getElementById('standing');
+        const catStatus = document.getElementById('catStatus');
+        const foodBtn = document.getElementById('foodBtn');
+        const waterBtn = document.getElementById('waterBtn');
+        const poopBtn = document.getElementById('poopBtn');
+
+        let feedCount = 0;
+        let isAnimating = false;
+        let isExploded = false;
+
+        // Durasi GIF dalam milidetik
+        const EATING_DURATION = 1500;
+        const EXPLODE_DURATION = 2800; 
+        const POOP_DURATION = 1500;
+
+        function setButtonsDisabled(state) {
+            foodBtn.disabled = state || isExploded;
+            waterBtn.disabled = state || isExploded;
+            poopBtn.disabled = state;
+        }
+
+        function resetCat() {
+            feedCount = 0;
+            isAnimating = false;
+            isExploded = false;
+            standingCat.classList.remove('exploded-img');
+            standingCat.src = 'assets/catStandings.png';
+            catStatus.textContent = 'Feed: 0/3 | Kimchi is staring at you...';
+            poopBtn.textContent = 'Make Kimchi Poop';
+            setButtonsDisabled(false);
+        }
+
+        // Buka popup
+        surpriseBtn.addEventListener('click', () => {
+            popup.classList.add('show');
+        });
+
+        // Tutup popup show gif meledak
+        closePopup.addEventListener('click', () => {
+            if (isAnimating) return;
+
+            isAnimating = true;
+            setButtonsDisabled(true);
+            standingCat.classList.remove('exploded-img');
+            standingCat.src = `assets/catExplode.gif?t=${Date.now()}`;
+            catStatus.textContent = 'Bye-bye!! *PROCEED TO EXPLODE*';
+
+            setTimeout(() => {
+                popup.classList.remove('show');
+                resetCat(); // Reset supaya saat dibuka lagi kucingnya kembali normal
+            }, EXPLODE_DURATION);
+        });
+
+        // Fungsi saat memberi makan atau minum
+        function handleFeed(type) {
+            if (isAnimating || isExploded) return;
+
+            isAnimating = true;
+            setButtonsDisabled(true);
+            feedCount++;
+
+            standingCat.classList.remove('exploded-img');
+            standingCat.src = `assets/catEating.gif?t=${Date.now()}`;
+            catStatus.textContent = type === 'food'
+                ? `Nom nom... (Feed ${feedCount}/3)`
+                : `Slurp slurp... (Feed ${feedCount}/3)`;
+
+            setTimeout(() => {
+                if (feedCount === 1) {
+                    standingCat.src = 'assets/catStanding2.png';
+                    catStatus.textContent = 'Feed 1/3: Kimchi is getting chonkier...';
+                    isAnimating = false;
+                    setButtonsDisabled(false);
+
+                } else if (feedCount === 2) {
+                    standingCat.src = 'assets/catStanding3.png';
+                    catStatus.textContent = 'Feed 2/3: WARNING! One more and Kimchi will explode!';
+                    isAnimating = false;
+                    setButtonsDisabled(false);
+
+                } else if (feedCount >= 3) {
+                    standingCat.src = `assets/catExplode.gif?t=${Date.now()}`;
+                    catStatus.textContent = 'KABOOM!! Too much!!! Kimchi had too much!!';
+
+                    setTimeout(() => {
+                        isExploded = true;
+                        isAnimating = false;
+                        standingCat.classList.add('exploded-img');
+
+                        if (type === 'food') {
+                            standingCat.src = 'assets/catSpilledFood.jpg';
+                            catStatus.textContent = 'Kimchi exploded and made a food mess!!';
+                        } else {
+                            standingCat.src = 'assets/catSpilledMilk.jpg';
+                            catStatus.textContent = 'Kimchi exploded and made a milk mess!!';
+                        }
+
+                        poopBtn.textContent = 'Clean & Revive';
+                        setButtonsDisabled(false);
+                    }, EXPLODE_DURATION);
+                }
+            }, EATING_DURATION);
+        }
+
+        foodBtn.addEventListener('click', () => handleFeed('food'));
+        waterBtn.addEventListener('click', () => handleFeed('water'));
+
+        // Tombol Make it Poop
+        poopBtn.addEventListener('click', () => {
+            if (isAnimating) return;
+
+            if (isExploded) {
+                resetCat();
+                return;
+            }
+
+            if (feedCount === 0) {
+                catStatus.textContent = 'Feed: 0/3 | Stomach is empty! Feed Kimchi first.';
+                return;
+            }
+
+            isAnimating = true;
+            setButtonsDisabled(true);
+            standingCat.src = `assets/catPoopingAnimation.gif?t=${Date.now()}`;
+            catStatus.textContent = 'Pooping out the extra calories...';
+
+            setTimeout(() => {
+                feedCount = Math.max(0, feedCount - 1);
+                isAnimating = false;
+
+                if (feedCount === 0) {
+                    standingCat.src = 'assets/catStandings.png';
+                    catStatus.textContent = 'Feed 0/3: Back to slim & healthy!';
+                } else if (feedCount === 1) {
+                    standingCat.src = 'assets/catStanding2.png';
+                    catStatus.textContent = 'Feed 1/3: Slightly less chonky now.';
+                } else if (feedCount === 2) {
+                    standingCat.src = 'assets/catStanding3.png';
+                    catStatus.textContent = 'Feed 2/3: Still dangerously full!';
+                }
+
+                setButtonsDisabled(false);
+            }, POOP_DURATION);
+        });
+    </script>
 </body>
 </html>
