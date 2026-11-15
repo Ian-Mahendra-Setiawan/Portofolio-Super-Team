@@ -5,44 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ian</title>
     <link rel="stylesheet" href="ian.css">
+    <script src="ian.js" defer></script>
 </head>
 <body>
-    <section>
-        Halo Gais, perkenalkan aku
-        <h1>Ian Mahendra Setiawan</h1>
-        <img id="pfp" src="assets/neopolitan.jpg">
+    <section id="master">
+        <section class="flexit">
+            <section>
+                Halo Kids, perkenalkan aku
+                <h1>Ian Mahendra Setiawan</h1>
+                Alias: Lan
+            </section>
+            <img onclick="togglePFP()" id="pfp" class="interactive" src="assets/neopolitan.jpg">
+        </section>
         
-        <ul>Hobi
-            <li>Gaming</li>
-            <li>Anime</li>
-            <li>Content Creation</li>
-        </ul>
-        <ul>Keahlian
-            <li>Bahasa
-                <ul>
-                    <li>Indonesia (Penutur Asli)</li>
-                    <li>Inggris</li>
-                    <li>Jerman tingkat menengah</li>
-                </ul>
-            </li>
-            <li>Pemrograman
-                <ul>
-                    <li>Pemrograman Kompetitif dengan C++</li>
-                    <li>Object Oriented Programming dengan Java</li>
-                    <li>Database Querying dengan SQL</li>
-                    <li>Gamedev dengan Godot</li>
-                </ul>
-            </li>
-            <li>Content Creation
-                <ul>
-                    <li>Desain Grafis dengan Photoshop dan Affinity Designer</li>
-                    <li>Video Editing dengan Davinci Resolve</li>
-                </ul>
-            </li>
-        </ul>
+        <section id="textleft">
+            <ul>Hobi
+                <li><p class="interactive" data-shot="2">Gaming</p>
+                    <ul>
+                        <li>GD Personal Hardest: [60hz] A Bizarre Phantasm</li>
+                        <li>Brawlhalla Personal Best ELO: 2039</li>
+                    </ul>
+                </li>
+                <li><p class="interactive" data-shot="3">Anime</p></li>
+                <li>Olahraga
+                    <ul>
+                        <li>Pull-Up Max Rep: 8</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>Keahlian
+                <li>Bahasa
+                    <ul>
+                        <li>Indonesia (Penutur Asli)</li>
+                        <li>Inggris</li>
+                        <li>Jerman tingkat menengah</li>
+                    </ul>
+                </li>
+                <li>Pemrograman
+                    <ul>
+                        <li>Pemrograman Kompetitif dengan C++</li>
+                        <li>Object Oriented Programming dengan Java</li>
+                        <li>Database Querying dengan SQL</li>
+                        <li>Gamedev dengan Godot</li>
+                    </ul>
+                </li>
+                <li>Content Creation
+                    <ul>
+                        <li>Desain Grafis dengan Photoshop dan Affinity Designer</li>
+                        <li>Video Editing dengan Davinci Resolve</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>J*bs
+                <li>Asisten Dosen Informatika Unpar (2026)
+                    <ul>
+                        <li>Algoritma dan Pemrograman</li>
+                        <li>Algoritmda dan Struktur Data</li>
+                    </ul>
+                </li>
+                <li>HMPSIF?
+                    <ul>
+                        <li>Staff Divisi Litbang (2025)</li>
+                        <li><p class="interactive" data-shot="4">Koordinator Divisi Akademik (2026)</p></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
         <div>Aktivitas Terakhir</div>
         <img class="activity" src="assets/Screenshot 2026-11-10 111814.png" title="Babak Penyisihan INC pada tanggal 25 Oktober 2026">
         <div>Babak Penyisihan INC 2026</div>
+        <section class="textleft">
+            <ul>Used Assets
+                <li><a href="https://www.rw-designer.com/cursor-set/hypnospace" class="interactive">HypnOS 1.5x Cursors by Skapasta</a></li>
+                <li>Devil May Cry 3 Menu SFX</li>
+                <li><a href="https://www.dafont.com/library-3-am.font" class="interactive">Library 3 AM Font by Igor Kosinsky</a></li>
+                <li><a href="https://x.com/dai_gazacy/status/899566505620250624" class="interactive">Neopolitan Fanart by @dai_gazacy</a></li>
+            </ul>
+        </section>
+        <h1><a href="index.html" class="interactive">Back to Main Page</a></h1>
     </section>
+    <div id="distraction" class="modal"></div>
+    <div id="bg">
+        <div>
+            <h1 class="modal">WELCOME</h1>
+            <div class="modal hidden">
+                <h2>Games I recommend</h2>
+                <div>
+                    <div>
+                        <img src="assets/GD.png">
+                        Geometry Dash
+                    </div>
+                    <div>
+                        <img src="assets/Brawlhalla.png">
+                        Brawlhalla
+                    </div>
+                    <div>
+                        <img src="assets/Ultrakill.png">
+                        Ultrakill
+                    </div>
+                    <div>
+                        <img src="assets/HollowKnight.png">
+                        Hollow Knight
+                    </div>
+                    <div>
+                        <img src="assets/Silksong.png">
+                        Hollow Knight: Silksong
+                    </div>
+                </div>
+            </div>
+            <div class="modal hidden">
+                <h2>Animes I recommend</h2>
+                <div>
+                    <div>
+                        <img src="assets/JJBA.jpg">
+                        Jojo's Bizarre Adventure
+                    </div>
+                    <div>
+                        <img src="assets/RWBY.webp">
+                        RWBY
+                    </div>
+                    <div>
+                        <img src="assets/DeathNote.jpg">
+                        Death Note
+                    </div>
+                    <div>
+                        <img src="assets/Lain.jpg">
+                        Serial Experiments Lain
+                    </div>
+                    <div>
+                        <img src="assets/Monster.jpg">
+                        Monster
+                    </div>
+                </div>
+            </div>
+            <div class="modal hidden">
+                <img src="assets/Pawns.jpeg" style="width: 400px;">
+            </div>
+            <p id="popupButton" class="interactive" data-shot="0">Close</p>
+        </div>
+    </div>
+    <audio id="hoverSFX" src="assets/DMC3 Hover.mp3"></audio>
+    <audio id="selectSFX" src="assets/DMC3 Select.mp3"></audio>
 </body>
 </html>
